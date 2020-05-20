@@ -8,12 +8,12 @@
 &&、||、()操作  
 现在支持将合法算式复制到文本框中 进行运算  
 初始界面:  
-![Y1qTEV.jpg](https://s1.ax1x.com/2020/05/10/Y1qTEV.jpg)
+![start.jpg](https://s1.ax1x.com/2020/05/20/Y7jx6f.jpg)
 
 ------
 
 运行界面：  
-![Y1q7NT.jpg](https://s1.ax1x.com/2020/05/10/Y1q7NT.jpg)
+![run_result.jpg](https://s1.ax1x.com/2020/05/10/Y1q7NT.jpg)
 
 ------
 
