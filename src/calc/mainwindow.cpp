@@ -62,6 +62,7 @@ void MainWindow::init()
     for(int i=0;i<=7;i++)
         for(int j=0;j<=7;j++)
             solve[i][j]=-1;
+    //以上是先给各个运算符编号
     solve[1][0] = 0;
     solve[1][1] = 1;
     solve[1][2] = 1;
@@ -70,6 +71,7 @@ void MainWindow::init()
     //由于‘）’根本不会入栈 所以不存在4作为第二维出现
     //以下注释掉的组合均是不会出现的情况
     solve[1][5] = 1;
+    solve[1][6] = 1;
 
     solve[2][0] = 0;
     solve[2][1] = 0;
@@ -77,6 +79,7 @@ void MainWindow::init()
     solve[2][3] = 0;
     // solve[2][4] = ;
     solve[2][5] = 0;
+    solve[2][6] = 1;
 
     solve[3][0] = 0;
     solve[3][1] = 0;
@@ -84,6 +87,7 @@ void MainWindow::init()
     solve[3][3] = 0;
     // solve[3][4] = 1;
     solve[3][5] = 0;
+    solve[3][6] = 0;
 
     // solve[4][0] = 1;
     //不会存在这种情况
@@ -99,6 +103,7 @@ void MainWindow::init()
     // solve[0][3] = 0;
     // solve[0][4] = 2;
     solve[0][5] = 1;
+    solve[0][6] = 1;
 
     solve[5][0] = 0;
     solve[5][1] = 1;
@@ -106,6 +111,13 @@ void MainWindow::init()
     solve[5][3] = 0;
     // solve[5][4]=
     solve[5][5] = 1;
+    solve[5][6] = 1;
+
+    solve[6][0] = 0;
+    solve[6][1] = 0;
+    solve[6][2] = 0;
+    solve[6][3] = 0;
+    solve[6][5] = 0;
     return ;
 }
 void MainWindow::work(char wit)
@@ -120,6 +132,14 @@ void MainWindow::work(char wit)
     {
         double num2 = stk_di.top();
         stk_di.pop();
+        if (top == '!')
+        {
+            num2 = !num2;
+            stk_di.push(num2);
+            stk_ch.pop();
+            top = stk_ch.top();
+            continue;
+        }
         double num1 = stk_di.top();
         stk_di.pop();
         switch(top){
@@ -187,15 +207,16 @@ void MainWindow::fslove(QString sh)
     {
         if (isdigit(str[i]))
         {
-            int flag = 1, pflag = 1;
+//            int flag = 1, pflag = 1;
+            int flag = 1;
             if (ys[str[i - 1]] == 1 && (str[i - 2] == '(' || str[i - 2] == '#'))
             {
                 if (str[i - 1] == '-')
                     flag = -1;
                 stk_ch.pop();
             }
-            if (str[i - 1] == '!')
-                pflag = 0, stk_ch.pop();
+//            if (str[i - 1] == '!')
+//                pflag = 0, stk_ch.pop();
             int di = 0;
             while (isdigit(str[i]))
             {
@@ -204,8 +225,8 @@ void MainWindow::fslove(QString sh)
                 i++;
             }
             di *= flag;
-            if (!pflag)
-                di = (di == 0) ? 1 : 0;
+//            if (!pflag)
+//                di = (di == 0) ? 1 : 0;
             stk_di.push(di);
         }
         if (str[i] == ' '||str[i]=='\n')
@@ -259,6 +280,7 @@ bool MainWindow::jud(QString sh)
         if(sh[i]!='|'&&sh[i]!='&')
         if(sh[i]!='('&&sh[i]!=')')
         if(sh[i]!=' '&&sh[i]!='\n')
+        if(sh[i]!='!')
         {
             err=3;
             runError();
@@ -266,6 +288,11 @@ bool MainWindow::jud(QString sh)
         }
     }
     return 1;
+}
+void MainWindow::on_pbtnfou_clicked()
+{
+    sh+='!';
+    makeit();
 }
 void MainWindow::on_pbtnans_clicked()
 {

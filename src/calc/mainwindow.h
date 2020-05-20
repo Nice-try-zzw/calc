@@ -33,6 +33,8 @@ private slots:
 
     void makeit();
 
+    void on_pbtnfou_clicked();
+
     void on_pbtnpoint_clicked();
 
     void on_pbtnans_clicked();

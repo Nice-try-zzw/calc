@@ -47,6 +47,7 @@ public:
     QPushButton *pbtnjian;
     QPushButton *pbtn9;
     QPushButton *pbtn8;
+    QPushButton *pbtnfou;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -62,7 +63,7 @@ public:
         pbtnbing->setGeometry(QRect(100, 110, 91, 91));
         pbtnback = new QPushButton(centralwidget);
         pbtnback->setObjectName(QString::fromUtf8("pbtnback"));
-        pbtnback->setGeometry(QRect(300, 110, 201, 91));
+        pbtnback->setGeometry(QRect(400, 110, 101, 91));
         pbtncheng = new QPushButton(centralwidget);
         pbtncheng->setObjectName(QString::fromUtf8("pbtncheng"));
         pbtncheng->setGeometry(QRect(300, 410, 91, 91));
@@ -129,6 +130,9 @@ public:
         pbtn8 = new QPushButton(centralwidget);
         pbtn8->setObjectName(QString::fromUtf8("pbtn8"));
         pbtn8->setGeometry(QRect(100, 410, 91, 91));
+        pbtnfou = new QPushButton(centralwidget);
+        pbtnfou->setObjectName(QString::fromUtf8("pbtnfou"));
+        pbtnfou->setGeometry(QRect(299, 110, 91, 91));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -168,6 +172,7 @@ public:
         pbtnjian->setText(QApplication::translate("MainWindow", "-", nullptr));
         pbtn9->setText(QApplication::translate("MainWindow", "9", nullptr));
         pbtn8->setText(QApplication::translate("MainWindow", "8", nullptr));
+        pbtnfou->setText(QApplication::translate("MainWindow", "!", nullptr));
     } // retranslateUi
 
 };
